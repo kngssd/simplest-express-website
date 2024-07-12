@@ -4,13 +4,12 @@ const app = express();
 //configure the server
 
 app.get("/", (req, res) => {
-  res.send("Here is the root doc response");
+  res.send("Here is the root doc response. try /randomRoll");
 });
 
-app.get("/randomJoke", (req, res) => {
-  console.log("hi I got /randomJoke req: ");
-  const number = randomNumber();
-  console.log(number);
+app.get("/randomRoll", (req, res) => {
+  console.log("hi I got /randomRoll req: ");
+  const number = randomDieRoll();
   res.send(number + "");
 });
 //start the server listening
@@ -19,7 +18,7 @@ app.listen(3000, () => {
   console.log("your express app started running!");
 });
 
-function randomNumber() {
+function randomDieRoll() {
   const n = 1 + Math.floor(Math.random() * 6);
   return n;
 }
